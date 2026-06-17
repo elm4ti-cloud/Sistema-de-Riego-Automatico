@@ -175,6 +175,8 @@ El programa realiza las siguientes funciones:
 
 ✅ Programación implementada
 
+🟡 En Construcción
+
 🔄 Posibles mejoras futuras
 
 ---
