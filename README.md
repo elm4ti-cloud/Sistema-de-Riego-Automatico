@@ -140,7 +140,7 @@ Monitorear continuamente
 
 # Imagen del Circuito
 
-![Circuito del sistema de riego](docs/imagenes/circuito_riego.png)
+![Circuito del sistema de riego](Circuito.png)
 
 ---
 
