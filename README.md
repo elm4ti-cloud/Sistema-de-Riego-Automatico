@@ -169,30 +169,11 @@ El programa realiza las siguientes funciones:
 
 ---
 
-# Evidencias
-
-## Fotografías
-
-* Montaje del circuito.
-* Conexión del sensor.
-* Pruebas del servomotor.
-* Sistema completo funcionando.
-
-## Videos
-
-* Demostración de detección de suelo seco.
-* Activación automática del servomotor.
-* Funcionamiento completo del sistema.
-
----
-
 # Estado Actual del Proyecto
 
 ✅ Diseño completado
 
 ✅ Programación implementada
-
-✅ Pruebas de funcionamiento realizadas
 
 🔄 Posibles mejoras futuras
 
