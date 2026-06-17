@@ -146,12 +146,7 @@ Monitorear continuamente
 
 # Código Fuente
 
-El código principal se encuentra en:
-
-```text
-codigo/sistema_riego/
-└── sistema_riego.ino
-```
+![Codigo del sistema de riego](Codigo.txt)
 
 El programa realiza las siguientes funciones:
 
