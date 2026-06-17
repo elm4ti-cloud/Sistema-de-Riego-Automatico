@@ -1,289 +1,229 @@
-# Sistema-de-Riego-Automatico
-# Proyecto de Sistema de Riego Tecnificado
+# Sistema Automático de Riego con Sensor de Humedad y Arduino
 
-## Información General
+## Integrantes
 
-### Nombre del Proyecto
-
-**Diseño de Sistema de Riego Tecnificado para [Nombre del Predio / Proyecto]**
-
-### Cliente
-
-[Nombre del cliente]
-
-### Ubicación
-
-[Municipio, Departamento, País]
-
-### Estado del Proyecto
-
-🟡 Fase de Diseño
-
-### Fecha de Inicio
-
-[DD/MM/AAAA]
-
-### Responsable del Diseño
-
-[Nombre del ingeniero o empresa]
+* Matias Villero
 
 ---
 
 # Descripción del Proyecto
 
-El presente proyecto contempla el diseño de un sistema de riego tecnificado destinado a garantizar el suministro eficiente y uniforme de agua al cultivo, optimizando el uso del recurso hídrico y mejorando la productividad agrícola.
+Este proyecto consiste en un sistema automático de riego que monitorea la humedad del suelo mediante un sensor de humedad conectado a un Arduino Uno.
 
-El sistema incluirá los componentes hidráulicos, eléctricos y de automatización necesarios para satisfacer los requerimientos de caudal, presión y programación de riego definidos durante la etapa de ingeniería.
+Cuando el nivel de humedad del suelo desciende por debajo de un valor establecido, el Arduino activa un servomotor que simula la apertura de una válvula de riego. Al mismo tiempo, un LED indica visualmente que el sistema se encuentra regando.
+
+Una vez que el suelo alcanza un nivel adecuado de humedad, el sistema desactiva el riego y regresa al estado de monitoreo.
 
 ---
 
 # Problema Identificado
 
-Actualmente el área de cultivo presenta limitaciones asociadas a:
+En jardines, huertos domésticos y pequeños cultivos, el riego suele realizarse manualmente, lo que puede generar problemas como:
 
-* Aplicación no uniforme del agua.
-* Pérdidas por sobre-riego o déficit hídrico.
-* Baja eficiencia en el uso del recurso hídrico.
-* Dependencia de procesos manuales de operación.
-* Dificultad para monitorear y controlar los eventos de riego.
+* Exceso de agua.
+* Falta de agua para las plantas.
+* Desperdicio de recursos hídricos.
+* Dependencia de la supervisión constante del usuario.
 
-Estas condiciones pueden afectar negativamente el rendimiento productivo, incrementar costos operativos y generar desperdicio de agua.
+La automatización del riego permite optimizar el uso del agua y mantener condiciones adecuadas para el crecimiento de las plantas.
 
 ---
 
 # Objetivo General
 
-Diseñar un sistema de riego tecnificado que garantice la aplicación uniforme y eficiente del agua requerida por el cultivo, cumpliendo los criterios hidráulicos, operativos y de automatización definidos para el proyecto.
+Diseñar e implementar un sistema automático de riego capaz de monitorear la humedad del suelo y activar el riego cuando sea necesario mediante el uso de sensores y actuadores controlados por Arduino.
 
 ---
 
 # Objetivos Específicos
 
-* Determinar la demanda hídrica del cultivo.
-* Definir la sectorización hidráulica del sistema.
-* Dimensionar la red de distribución.
-* Seleccionar equipos de bombeo y filtración.
-* Diseñar el sistema de control y automatización.
-* Validar el desempeño hidráulico mediante cálculos y simulaciones.
-* Generar la documentación técnica necesaria para construcción y puesta en marcha.
+* Medir la humedad del suelo utilizando un sensor de humedad.
+* Procesar las lecturas mediante un Arduino Uno.
+* Activar un servomotor cuando la humedad esté por debajo del umbral establecido.
+* Utilizar un LED para indicar el estado de funcionamiento del sistema.
+* Validar el funcionamiento mediante pruebas experimentales.
 
 ---
 
-# Alcance del Diseño
+# Componentes Utilizados
 
-El proyecto incluye:
-
-* Levantamiento y análisis de información base.
-* Cálculo de requerimientos hídricos.
-* Diseño conceptual y detallado.
-* Memorias de cálculo hidráulico.
-* Selección de equipos.
-* Diseño de automatización y control.
-* Elaboración de planos.
-* Especificaciones técnicas.
-* Presupuesto referencial.
-
-El proyecto no incluye la construcción ni la operación del sistema.
+| Componente                 | Cantidad | Función                                    |
+| -------------------------- | -------- | ------------------------------------------ |
+| Arduino Uno                | 1        | Controlador principal                      |
+| Sensor de humedad de suelo | 1        | Medición de humedad                        |
+| Servomotor SG90            | 1        | Simulación de apertura y cierre de válvula |
+| LED rojo                   | 1        | Indicador visual del estado del sistema    |
+| Resistencia 220 Ω          | 1        | Protección del LED                         |
+| Protoboard                 | 1        | Conexiones temporales                      |
+| Cables de conexión         | Varios   | Interconexión de componentes               |
+| Cable USB                  | 1        | Alimentación y programación                |
 
 ---
 
-# Criterios de Diseño
-
-## Información Agronómica
-
-| Parámetro        | Valor       |
-| ---------------- | ----------- |
-| Cultivo          | [Pendiente] |
-| Área total       | [Pendiente] |
-| Marco de siembra | [Pendiente] |
-| ET₀              | [Pendiente] |
-| Kc               | [Pendiente] |
-
-## Parámetros Hidráulicos
-
-| Parámetro                | Valor       |
-| ------------------------ | ----------- |
-| Caudal de diseño         | [Pendiente] |
-| Presión mínima requerida | [Pendiente] |
-| Presión máxima permitida | [Pendiente] |
-| Uniformidad objetivo     | > 85%       |
-| Eficiencia de aplicación | [Pendiente] |
-
----
-
-# Arquitectura General del Sistema
+# Arquitectura del Sistema
 
 ```text
-Fuente de Agua
-      ↓
-Sistema de Bombeo
-      ↓
-Sistema de Filtración
-      ↓
-Red Principal
-      ↓
-Red Secundaria
-      ↓
-Válvulas de Control
-      ↓
-Laterales
-      ↓
-Emisores
-```
-
-## Sistema de Automatización
-
-```text
-Sensores
-     ↓
-Controlador PLC / RTU
-     ↓
-Tablero de Control
-     ↓
-Válvulas Automáticas
-     ↓
-Sectores de Riego
+Sensor de Humedad
+         ↓
+     Arduino Uno
+         ↓
+ ┌───────────────┐
+ ↓               ↓
+Servomotor      LED
+(Válvula)   (Indicador)
 ```
 
 ---
 
-# Componentes Principales
+# Conexiones del Circuito
 
-| Sistema         | Componente                         |
-| --------------- | ---------------------------------- |
-| Captación       | Toma de agua                       |
-| Bombeo          | Bomba principal                    |
-| Filtración      | Filtros                            |
-| Distribución    | Tuberías principales y secundarias |
-| Control         | Válvulas hidráulicas               |
-| Automatización  | PLC / RTU                          |
-| Instrumentación | Sensores de presión y caudal       |
-| Energía         | Tablero eléctrico                  |
+## Sensor de Humedad
+
+| Sensor | Arduino |
+| ------ | ------- |
+| VCC    | 5V      |
+| GND    | GND     |
+| SIG    | A0      |
+
+## Servomotor
+
+| Servo                 | Arduino       |
+| --------------------- | ------------- |
+| Rojo (VCC)            | 5V            |
+| Negro/Marrón (GND)    | GND           |
+| Verde/Naranja (Señal) | Pin Digital 9 |
+
+## LED
+
+| LED        | Arduino                 |
+| ---------- | ----------------------- |
+| Ánodo (+)  | Pin Digital 13          |
+| Cátodo (-) | Resistencia 220 Ω → GND |
 
 ---
 
-# Estructura del Repositorio
+# Funcionamiento
+
+1. El sensor de humedad mide continuamente las condiciones del suelo.
+2. El Arduino recibe la lectura a través del pin analógico A0.
+3. El programa compara el valor obtenido con un umbral de humedad previamente definido.
+4. Si el suelo está seco:
+
+   * El servomotor gira para abrir la válvula de riego.
+   * El LED se enciende indicando que el sistema está regando.
+5. Si el suelo tiene suficiente humedad:
+
+   * El servomotor vuelve a la posición de cierre.
+   * El LED permanece apagado.
+6. El proceso se repite continuamente.
+
+---
+
+# Diagrama de Flujo
 
 ```text
-proyecto-riego/
-│
-├── README.md
-│
-├── calculos/
-│   ├── demanda_hidrica/
-│   ├── hidraulica/
-│   ├── bombeo/
-│   └── automatizacion/
-│
-├── planos/
-│   ├── civil/
-│   ├── hidraulico/
-│   ├── electrico/
-│   └── automatizacion/
-│
-├── especificaciones/
-│
-├── simulaciones/
-│
-├── presupuesto/
-│
-├── evidencias/
-│
-└── revisiones/
+Inicio
+   ↓
+Leer Sensor
+   ↓
+¿Suelo seco?
+ ┌───────┴────────┐
+ Sí              No
+ ↓                ↓
+Abrir Servo    Mantener Cerrado
+Encender LED   Apagar LED
+ ↓                ↓
+Monitorear continuamente
 ```
 
 ---
 
-# Entregables de Ingeniería
+# Imagen del Circuito
 
-## Memorias de Cálculo
-
-* Demanda hídrica.
-* Balance hidráulico.
-* Pérdidas de carga.
-* Dimensionamiento de tuberías.
-* Selección de bombas.
-
-## Planos
-
-* Planta general del sistema.
-* Plano de sectorización.
-* Plano hidráulico.
-* Plano eléctrico.
-* Plano de automatización.
-
-## Especificaciones Técnicas
-
-* Equipos de bombeo.
-* Sistemas de filtración.
-* Tuberías y accesorios.
-* Instrumentación.
-* Automatización.
+![Circuito del sistema de riego](docs/imagenes/circuito_riego.png)
 
 ---
 
-# Pruebas y Validaciones Previstas
+# Código Fuente
 
-| Validación                 | Objetivo                       |
-| -------------------------- | ------------------------------ |
-| Revisión hidráulica        | Verificar presiones y caudales |
-| Revisión de bombeo         | Validar punto de operación     |
-| Simulación de sectores     | Comprobar uniformidad          |
-| Revisión eléctrica         | Validar cargas instaladas      |
-| Revisión de automatización | Verificar secuencia de control |
+El código principal se encuentra en:
 
----
+```text
+codigo/sistema_riego/
+└── sistema_riego.ino
+```
 
-# Riesgos Identificados
+El programa realiza las siguientes funciones:
 
-| Riesgo                            | Mitigación                     |
-| --------------------------------- | ------------------------------ |
-| Variación de caudal disponible    | Factor de seguridad hidráulico |
-| Baja presión en sectores críticos | Optimización de diámetros      |
-| Fallas eléctricas                 | Protección eléctrica adecuada  |
-| Obstrucción de emisores           | Sistema de filtración adecuado |
+* Lectura del sensor de humedad.
+* Comparación con un umbral definido.
+* Control del servomotor.
+* Activación del LED indicador.
+* Monitoreo continuo del estado del sistema.
 
 ---
 
-# Estado Actual
+# Pruebas Realizadas
 
-| Actividad                   | Estado |
-| --------------------------- | ------ |
-| Recolección de información  | ☐      |
-| Diseño conceptual           | ☐      |
-| Diseño hidráulico           | ☐      |
-| Diseño eléctrico            | ☐      |
-| Diseño automatización       | ☐      |
-| Revisión interdisciplinaria | ☐      |
-| Emisión de entregables      | ☐      |
+| Prueba                  | Descripción                                      | Resultado |
+| ----------------------- | ------------------------------------------------ | --------- |
+| Lectura del sensor      | Medición en suelo seco y húmedo                  | Correcta  |
+| Control del servomotor  | Movimiento según nivel de humedad                | Correcto  |
+| Encendido del LED       | Indicación visual del riego                      | Correcto  |
+| Integración del sistema | Funcionamiento conjunto de todos los componentes | Correcto  |
+
+---
+
+# Evidencias
+
+## Fotografías
+
+* Montaje del circuito.
+* Conexión del sensor.
+* Pruebas del servomotor.
+* Sistema completo funcionando.
+
+## Videos
+
+* Demostración de detección de suelo seco.
+* Activación automática del servomotor.
+* Funcionamiento completo del sistema.
+
+---
+
+# Estado Actual del Proyecto
+
+✅ Diseño completado
+
+✅ Programación implementada
+
+✅ Pruebas de funcionamiento realizadas
+
+🔄 Posibles mejoras futuras
+
+---
+
+# Dificultades Encontradas
+
+* Variaciones en las lecturas del sensor de humedad.
+* Ajuste del valor umbral para determinar cuándo activar el riego.
+* Calibración de la posición del servomotor para simular correctamente la apertura y cierre de la válvula.
 
 ---
 
 # Mejoras Futuras
 
-* Integración con plataforma SCADA.
-* Monitoreo remoto vía internet.
-* Sensores de humedad de suelo.
-* Control basado en clima.
-* Integración con energía solar.
-* Analítica de consumo de agua.
-
----
-
-# Control de Versiones
-
-Cada modificación relevante deberá registrarse mediante commits descriptivos.
-
-Ejemplos:
-
-* Agrega memoria de cálculo hidráulico.
-* Actualiza selección de bomba principal.
-* Corrige plano de red secundaria.
-* Incorpora automatización de válvulas.
-* Actualiza presupuesto del proyecto.
+* Implementar una bomba de agua real.
+* Sustituir el servomotor por una electroválvula.
+* Incorporar monitoreo remoto mediante WiFi.
+* Registrar datos históricos de humedad.
+* Agregar sensores de temperatura y humedad ambiental.
+* Implementar alimentación mediante paneles solares.
 
 ---
 
 # Conclusiones
 
-El presente repositorio centraliza toda la información técnica del proyecto y permite mantener trazabilidad completa del proceso de diseño, facilitando revisiones técnicas, control documental y futuras etapas de construcción, puesta en marcha y operación.
+Este proyecto permitió desarrollar un sistema automático de riego utilizando Arduino, sensores y actuadores. Se comprobó que es posible monitorear continuamente la humedad del suelo y activar automáticamente el riego cuando las condiciones lo requieren.
+
+Además, el proyecto demuestra cómo la automatización puede contribuir al ahorro de agua, la reducción de la intervención humana y el mantenimiento adecuado de las plantas mediante tecnologías de bajo costo.
