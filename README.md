@@ -144,6 +144,10 @@ Monitorear continuamente
 
 ---
 
+# Imagen del Circuito
+![Video Del Funcionamiento](Video Explicatorio.mkv)
+
+
 # Código Fuente
 
 ![Codigo del sistema de riego](Codigo.txt)
