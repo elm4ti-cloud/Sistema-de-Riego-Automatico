@@ -144,9 +144,6 @@ Monitorear continuamente
 
 ---
 
-# Imagen del Circuito
-![Video Del Funcionamiento](Video Explicatorio.mkv)
-
 
 # Código Fuente
 
